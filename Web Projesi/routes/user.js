@@ -14,7 +14,7 @@ router.post('/signup',  (req,res) =>
 {
     let user = req.body;
 
-    var query =  "select email,password,role,status from tbl_user where email=?"
+    var query =  "select email,password,role,isActive from tbl_user where email=?"
     connection.query( query, [user.email], (err,results) => 
     {
         if(err)
@@ -26,7 +26,8 @@ router.post('/signup',  (req,res) =>
             // eger o emaile sahip baska kullanici yoksa ekle
             if(results.length <= 0)
             {
-                query = "insert into tbl_user(name,contactNumber,email,password,status,role) values (?,?,?,?,'false','user')"
+                query = "insert into tbl_user(name, contactNumber, email, password, isActive, role)"+
+                        "values (?,?,?,?,'false','user')";
                 connection.query(query,[user.name, user.contactNumber, user.email, user.password],(err,results)=>
                 {
                     if(err)
@@ -50,7 +51,7 @@ router.post('/signup',  (req,res) =>
 router.post('/login', (req,res)=>
 {
     const user = req.body;
-    var query = "select email, password, role, status from tbl_user where email=?"
+    var query = "select email, password, role, isActive from tbl_user where email=?"
     connection.query(query, [user.email], (err,results)=>
     {
         if(err)
@@ -63,7 +64,7 @@ router.post('/login', (req,res)=>
             {
                 return res.status(401).json({message: "Wrong UserName or password"});
             }
-            else if(results[0].status == "false")
+            else if(results[0].isActive == "false")
             {
                 return res.status(401).json({message: "Please wait for Admin approval"});
             }
@@ -144,7 +145,7 @@ router.post('/forgetPassword', (req, res)=>
 
 router.get('/getAllUsers', authentication.authenticateToken, checkRole.checkRole, (req,res)=>
 {
-    var query ="select userId, name, email, contactNumber, status from tbl_user where role='user'";
+    var query ="select userId, name, email, contactNumber, isActive from tbl_user where role='user'";
     connection.query(query, (err,results)=>
     {
         if(err)
@@ -162,8 +163,8 @@ router.get('/getAllUsers', authentication.authenticateToken, checkRole.checkRole
 router.patch('/updateStatus', authentication.authenticateToken, checkRole.checkRole, (req,res)=>
 {
     let user = req.body;
-    var query = "update tbl_user set status=? where userId=?";
-    connection.query(query, [user.status, user.userId], (err, results)=>
+    var query = "update tbl_user set isActive=? where userId=?";
+    connection.query(query, [user.isActive, user.userId], (err, results)=>
     {
         if(err)
         {

@@ -1,3 +1,6 @@
+----------------------------------------------------------------
+-- CREATING TABLES --
+----------------------------------------------------------------
 create table tbl_user
 (
     userId int primary key AUTO_INCREMENT,
@@ -5,18 +8,10 @@ create table tbl_user
     contactNumber varchar(20),
     email varchar(50),
     password varchar(250),
-    status varchar(20),
+    isActive varchar(20),
     role varchar(20),
     UNIQUE  (email)
 );
-
-
-insert into tbl_user(name, contactNumber, email, password, status, role) values
-                    ('Admin', '1231231231', 'admin@gmail.com', 'admin', 'true', 'admin');
-                    
-insert into tbl_user(name, contactNumber, email, password, status, role) values
-                    ('omer', '9876543210', 'omer.yilmaz2700@gmail.com', 'omer123', 'true', 'user');
-
 
 create  table tbl_category
 (
@@ -24,3 +19,35 @@ create  table tbl_category
     name varchar(100),
     primary key(categoryId)
 );
+
+create  table tbl_game
+(
+    gameId int NOT NULL AUTO_INCREMENT,
+    name varchar(60) NOT NULL,
+    description varchar(200),
+    price int,
+    isActive varchar(10),
+    categoryId int NOT NULL,
+    primary key(gameId)
+);
+
+----------------------------------------------------------------
+--ADDING DATAS--
+----------------------------------------------------------------
+
+--USER--
+
+insert into tbl_user(name, contactNumber, email, password, isActive, role) values
+                    ('Admin', '1231231231', 'admin@gmail.com', 'admin', 'true', 'admin');
+
+insert into tbl_user(name, contactNumber, email, password, isActive, role) values
+                    ('omer', '9876543210', 'omer.yilmaz2700@gmail.com', 'omer123', 'true', 'user');
+
+--CATEGORY--
+
+insert into tbl_category (name) values ("2D Platformer");
+
+--GAME--
+insert into tbl_game (name, description, price, isActive, categoryId) values
+                     ("Foxy","Help Foxy to save the Forrest!!!", 20,'true',1);
+

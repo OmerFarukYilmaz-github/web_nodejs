@@ -53,13 +53,13 @@ router.patch("/updateCategory", authentication.authenticateToken, checkRole.chec
         {
             if(results.affectedRows == 0)
             {
-                return res.status(400).json({message: "Category couldn't find"});
+                return res.status(404).json({message: "Category couldn't find"});
             }
             else
             {
                 return res.status(200).json({message: "Category updated successfully"});
             }
-    }
+        }
     })
 })
 
