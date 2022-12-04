@@ -144,7 +144,7 @@ router.post('/forgetPassword', (req, res)=>
 
 router.get('/getAllUsers', authentication.authenticateToken, checkRole.checkRole, (req,res)=>
 {
-    var query ="select id, name, email, contactNumber, status from tbl_user where role='user'";
+    var query ="select userId, name, email, contactNumber, status from tbl_user where role='user'";
     connection.query(query, (err,results)=>
     {
         if(err)
@@ -162,8 +162,8 @@ router.get('/getAllUsers', authentication.authenticateToken, checkRole.checkRole
 router.patch('/updateStatus', authentication.authenticateToken, checkRole.checkRole, (req,res)=>
 {
     let user = req.body;
-    var query = "update tbl_user set status=? where id=?";
-    connection.query(query, [user.status, user.id], (err, results)=>
+    var query = "update tbl_user set status=? where userId=?";
+    connection.query(query, [user.status, user.userId], (err, results)=>
     {
         if(err)
         {

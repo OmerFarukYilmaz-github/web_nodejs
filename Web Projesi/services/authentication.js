@@ -6,17 +6,18 @@ function authenticateToken(req, res, next)
     const authHeader = req.headers["authorization"];
     const token = authHeader && authHeader.split(' ')[1];
    
-    if(token == null) // not authenticated
+    if(token == null) // auth yok
     {   
         return res.sendStatus(401);
     }
     
     jwt.verify(token, process.env.TOKEN_KEY, (err, response)=>
     {
-        if(err) //not particularly as wanted
+        if(err) // auth istenen gibi degil
         {
             return res.sendStatus(403);
         }
+        
         res.locals = response;
         next();
     })
