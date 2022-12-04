@@ -4,6 +4,8 @@ const connection = require('./connection');
 const userRoute = require('./routes/user.js');
 const categoryRoute = require("./routes/category");
 const gameRoute = require("./routes/game");
+const dashboardRoute = require("./routes/dahsboard");
+
 const app = express();
 
 
@@ -14,5 +16,6 @@ app.use(express.json());
 app.use('/user', userRoute);
 app.use('/category', categoryRoute);
 app.use('/game', gameRoute);
+app.use('/dashboard', dashboardRoute);
 
 module.exports = app;
