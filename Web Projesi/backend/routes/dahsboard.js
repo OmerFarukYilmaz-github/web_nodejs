@@ -4,7 +4,7 @@ const router = express.Router();
 
 var authentication = require("../services/authentication");
 
-
+ 
 router.get("/details", authentication.authenticateToken, (req,res,next)=>
 {
     var categoryCount, gameCount;

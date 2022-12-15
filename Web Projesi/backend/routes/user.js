@@ -157,7 +157,6 @@ router.get('/getAllUsers', authentication.authenticateToken, checkRole.checkRole
             return res.status(200).json(results);
         }
     })
-
 })
 
 router.patch('/updateStatus', authentication.authenticateToken, checkRole.checkRole, (req,res)=>

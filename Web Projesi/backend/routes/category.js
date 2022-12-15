@@ -8,7 +8,7 @@ var checkRole = require("../services/checkRole");
 router.post("/addCategory", authentication.authenticateToken, checkRole.checkRole, (req,res,next)=>
 {
     let category = req.body;
-    query = "insert into tbl_category (name) values (?)";
+    let query = "insert into tbl_category (name) values (?)";
     connection.query(query, [category.name], (err,results)=>
     {
         if(err)
