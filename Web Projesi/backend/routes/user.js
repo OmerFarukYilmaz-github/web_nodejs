@@ -95,7 +95,7 @@ var transporter = nodemailer.createTransport
     }
 )
 
-router.post('/forgetPassword', (req, res)=>
+router.post('/forgotPassword', (req, res)=>
 {
     const user = req.body;
     var query = "select email, password from tbl_user where email=?"
