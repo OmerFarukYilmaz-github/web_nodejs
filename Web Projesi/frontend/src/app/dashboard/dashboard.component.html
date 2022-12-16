@@ -1,0 +1,27 @@
+<body>
+    <mat-card>
+        <b><span>Dashboard</span></b>
+    </mat-card>
+    <br>
+    <div class="row">
+        <div class="column">
+            <div class="card">
+                <div class="container">
+                    <h2 class="title">Total Category:</h2>
+                    <h1 class="title">{{data?.categoryCount}}</h1>
+                    <p><button class="button" [routerLink]="['/gamestore/category']">View Category</button></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="column">
+            <div class="card">
+                <div class="container">
+                    <h2 class="title">Total Games:</h2>
+                    <h1 class="title">{{data?.gameCount}}</h1>
+                    <p><button class="button" [routerLink]="['/gamestore/games']">View Games</button></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
