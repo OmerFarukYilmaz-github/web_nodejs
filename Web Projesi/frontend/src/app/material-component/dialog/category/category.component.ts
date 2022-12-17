@@ -61,7 +61,7 @@ export class CategoryComponent implements OnInit {
     {
       this.dialogRef.close();
       this.onAddCategory.emit();
-      this.responseMessage=response.meesage;
+      this.responseMessage=response.message;
       this.snackbarService.openSnackBar(this.responseMessage,"success");
     }
     ,(error:any)=>
@@ -84,7 +84,7 @@ export class CategoryComponent implements OnInit {
     var formData= this.categoryForm.value;
     var data= 
     {
-      id: this.dialogData.data.id,
+      categoryId: this.dialogData.data.categoryId,
       name: formData.name
     };
 
@@ -93,7 +93,7 @@ export class CategoryComponent implements OnInit {
     {
       this.dialogRef.close();
       this.onEditCategory.emit();
-      this.responseMessage=response.meesage;
+      this.responseMessage=response.message;
       this.snackbarService.openSnackBar(this.responseMessage,"success");
     }
     ,(error:any)=>
