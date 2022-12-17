@@ -9,8 +9,9 @@ export interface Menu
 }
 
 const MENUITEMS =[
-    {state:"dashboard",name:"Dashboard",icon:"dashboard",role:""},
-    {state:"category", name:"Manage category",icon:"category",role:"admin"}];
+    {state:"dashboard",name:"Dashboard",icon:"space_dashboard",role:""},
+    {state:"category", name:"Manage Category",icon:"category",role:"admin"},
+    {state:"game",name:"Manage Game",icon:"sports_esports ",role:""}];
 
 @Injectable()
 export class MenuItems{

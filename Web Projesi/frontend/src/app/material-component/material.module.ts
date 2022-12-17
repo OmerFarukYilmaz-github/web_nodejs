@@ -13,6 +13,8 @@ import { ConfirmationComponent } from './dialog/confirmation/confirmation.compon
 import { ChangePasswordComponent } from './dialog/change-password/change-password.component';
 import { ManageCategoryComponent } from './manage-category/manage-category.component';
 import { CategoryComponent } from './dialog/category/category.component';
+import { MenageGameComponent } from './menage-game/menage-game.component';
+import { GameComponent } from './dialog/game/game.component';
 
 @NgModule({
   imports: [
@@ -31,7 +33,9 @@ import { CategoryComponent } from './dialog/category/category.component';
     ConfirmationComponent,
     ChangePasswordComponent,
     ManageCategoryComponent,
-    CategoryComponent    
+    CategoryComponent,
+    MenageGameComponent,
+    GameComponent    
   ]
 })
 export class MaterialComponentsModule {}

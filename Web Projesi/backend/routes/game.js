@@ -9,7 +9,7 @@ var checkRole = require("../services/checkRole");
 
 
 
-router.post("/addGame", authentication.authenticateToken, checkRole.checkRole, (req,res)=>
+router.post("/add", authentication.authenticateToken, checkRole.checkRole, (req,res)=>
 {
     let game = req.body;
     let query= "insert into tbl_game (name, description, price, isActive, categoryId) values(?,?,?,'true',?)";
@@ -26,7 +26,7 @@ router.post("/addGame", authentication.authenticateToken, checkRole.checkRole, (
     })
 });
 
-router.get("/getAllGames", authentication.authenticateToken, (req,res,next)=>
+router.get("/getAll", authentication.authenticateToken, (req,res,next)=>
 {
     let query = "select game.gameId, game.name, game.description, game.price, game.isActive, category.categoryId, "+
             "category.name as categoryName " + 
@@ -45,7 +45,7 @@ router.get("/getAllGames", authentication.authenticateToken, (req,res,next)=>
     })
 });
 
-router.get("/getGamesByCategory/:categoryId", authentication.authenticateToken, (req,res,next)=>
+router.get("/getByCategory/:categoryId", authentication.authenticateToken, (req,res,next)=>
 {
     const categoryId = req.params.categoryId;
     let query = "select game.gameId, game.name, game.description, game.price, game.isActive " +
@@ -68,7 +68,7 @@ router.get("/getGamesByCategory/:categoryId", authentication.authenticateToken, 
     })
 });
 
-router.get("/getGamesById/:gameId", authentication.authenticateToken, (req,res,next)=>
+router.get("/getById/:gameId", authentication.authenticateToken, (req,res,next)=>
 {
     const gameId= req.params.gameId;
     let query = "select  game.name, game.description, game.price, game.isActive, category.categoryId, "+
@@ -93,7 +93,7 @@ router.get("/getGamesById/:gameId", authentication.authenticateToken, (req,res,n
 });
 
 
-router.patch("/updateGame", authentication.authenticateToken, checkRole.checkRole, (req,res,next)=>
+router.patch("/update", authentication.authenticateToken, checkRole.checkRole, (req,res,next)=>
 {
     let game= req.body;
     let query = "update tbl_game set name=?, categoryId=?, description=?, price=? where gameId=?";
@@ -117,7 +117,7 @@ router.patch("/updateGame", authentication.authenticateToken, checkRole.checkRol
     })
 });
 
-router.delete("/deleteGamebyId/:gameId", authentication.authenticateToken, checkRole.checkRole, (req,res,next)=>
+router.delete("/deletebyId/:gameId", authentication.authenticateToken, checkRole.checkRole, (req,res,next)=>
 {
     const gameId= req.params.gameId;
     let query = "delete from tbl_game where gameId=?";
@@ -141,7 +141,7 @@ router.delete("/deleteGamebyId/:gameId", authentication.authenticateToken, check
     })
 })
 
-router.patch("/updateGameStatus", authentication.authenticateToken, checkRole.checkRole, (req,res,next)=>
+router.patch("/updateStatus", authentication.authenticateToken, checkRole.checkRole, (req,res,next)=>
 {
     let game= req.body;
     let query = "update tbl_game set isActive=? where gameId=?";
