@@ -9,6 +9,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialRoutes } from './material.routing';
 import { MaterialModule } from '../shared/material-module';
 import { ViewGameComponent } from './dialog/view-game/view-game.component';
+import { ConfirmationComponent } from './dialog/confirmation/confirmation.component';
+import { ChangePasswordComponent } from './dialog/change-password/change-password.component';
 
 @NgModule({
   imports: [
@@ -23,7 +25,9 @@ import { ViewGameComponent } from './dialog/view-game/view-game.component';
   ],
   providers: [],
   declarations: [
-    ViewGameComponent    
+    ViewGameComponent,
+    ConfirmationComponent,
+    ChangePasswordComponent    
   ]
 })
 export class MaterialComponentsModule {}
