@@ -5,7 +5,7 @@ const router = express.Router();
 var authentication = require("../services/authentication");
 var checkRole = require("../services/checkRole");
 
-router.post("/addCategory", authentication.authenticateToken, checkRole.checkRole, (req,res,next)=>
+router.post("/add", authentication.authenticateToken, checkRole.checkRole, (req,res,next)=>
 {
     let category = req.body;
     let query = "insert into tbl_category (name) values (?)";
@@ -22,7 +22,7 @@ router.post("/addCategory", authentication.authenticateToken, checkRole.checkRol
     })
 })
 
-router.get("/getAllCategory", authentication.authenticateToken, (req,res,next)=>
+router.get("/getAll", authentication.authenticateToken, (req,res,next)=>
 {
     query = "select * from tbl_category order by name";
     connection.query(query, (err,results)=>
@@ -38,7 +38,7 @@ router.get("/getAllCategory", authentication.authenticateToken, (req,res,next)=>
     })
 })
 
-router.patch("/updateCategory", authentication.authenticateToken, checkRole.checkRole, (req,res,next)=>
+router.patch("/update", authentication.authenticateToken, checkRole.checkRole, (req,res,next)=>
 {
     let newValue = req.body;
 
