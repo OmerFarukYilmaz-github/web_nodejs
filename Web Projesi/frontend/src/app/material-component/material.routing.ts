@@ -3,6 +3,7 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
 import { RouteGuardService } from '../services/route-guard.service';
 import { ManageCategoryComponent } from './manage-category/manage-category.component';
 import { ManageOrderComponent } from './manage-order/manage-order.component';
+import { ManageUserComponent } from './manage-user/manage-user.component';
 import { MenageGameComponent } from './menage-game/menage-game.component';
 
 
@@ -33,6 +34,15 @@ export const MaterialRoutes: Routes = [
         data:
         {
             expectedRole:["user"]
+        }
+    },
+    {
+        path:"user",
+        component:ManageUserComponent,
+        canActivate:[RouteGuardService],
+        data:
+        {
+            expectedRole:["admin"]
         }
     }
 ];

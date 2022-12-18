@@ -8,11 +8,14 @@ export interface Menu
     role:string;
 }
 
-const MENUITEMS =[
+const MENUITEMS =
+[
     {state:"dashboard",name:"Dashboard",icon:"space_dashboard",role:""},
     {state:"category", name:"Manage Category",icon:"category",role:"admin"},
     {state:"game",name:"Manage Game",icon:"sports_esports ",role:"admin"},
-    {state:"order",name:"Manage Order",icon:"shopping_cart ",role:"user"}];
+    {state:"order",name:"Manage Order",icon:"shopping_cart ",role:"user"},
+    {state:"user",name:"Manage Users",icon:"people ",role:"admin"}
+];
 
 @Injectable()
 export class MenuItems{
