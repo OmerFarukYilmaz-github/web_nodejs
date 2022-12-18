@@ -58,4 +58,15 @@ export class GameService {
     )
   }  
 
+  getGamesByCategory(categoryId:any)
+  {
+    return this.httpClient.get(this.url + "/game/getByCategory/"+categoryId);
+  }
+
+  getGamesById(gameId:any)
+  {
+    return this.httpClient.get(this.url + "/game/getById/"+gameId);
+  }
+
+  
 }

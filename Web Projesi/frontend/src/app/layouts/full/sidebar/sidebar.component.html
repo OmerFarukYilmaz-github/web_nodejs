@@ -1,7 +1,7 @@
 <mat-nav-list appAccordion>
     <mat-list-item appAccordionLink *ngFor="let menuItem of menuItems.getMenuItems()" 
                     routeLinkActive="selected" group="{{menuItem.state}}" >
-        <a appAccordionToggle 
+        <a appAccordionToggle style="background-color: #080075"
         [routerLink]="['/gamestore',menuItem.state]" 
         *ngIf="(menuItem.role==='' || menuItem.role===tokenPayload.role)">
             <mat-icon>{{menuItem.icon}}</mat-icon>

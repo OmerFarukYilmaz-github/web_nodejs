@@ -1,7 +1,8 @@
 export class GlobalConstant{
     public static genericError:string = "Something went wrong!";
     public static unauthroized:string = "You are not authroized to access this page!";
-
+    public static gameExistError:string = "Game already exist!";
+    public static gameAdded:string = "Game Added Successfully";
     // değerler doğru formatta olsun
     public static nameRegex: string = "[a-zA-Z0-9 ]*";
     public static mailRegex: string = "[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}";
