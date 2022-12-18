@@ -17,7 +17,7 @@ export class CategoryComponent implements OnInit {
   categoryForm:any = FormGroup;
   dialogAction:any="Add";
   action:any= "Add";
-
+  
   responseMessage:any; 
 
 

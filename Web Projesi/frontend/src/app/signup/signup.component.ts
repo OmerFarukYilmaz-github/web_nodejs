@@ -33,6 +33,41 @@ export class SignupComponent implements OnInit {
     })
   }
 
+  handleAddAdminAction()
+  {
+      this.ngxService.start();
+      var formData = this.signupForm.value;
+      var data = 
+      {
+        name: formData.name,
+        email: formData.email,
+        contactNumber: formData.contactNumber,
+        password: formData.password
+      }
+    this.userService.addAdmin(data).subscribe((response:any)=>
+    {
+      this.ngxService.stop();
+      this.dialogRef.close();
+      this.responseMessage =response?.message;
+      this.snackbarService.openSnackBar(this.responseMessage,"");
+      this.router.navigate(['/']);
+    }
+    ,(error:any)=>
+    {
+      this.ngxService.stop();
+      if(error.error?.message)
+      {
+        this.responseMessage= error.error?.message;
+      }
+      else
+      {
+        this.responseMessage= GlobalConstant.genericError;
+      }
+
+      this.snackbarService.openSnackBar(this.responseMessage,GlobalConstant.error);
+    })
+  }
+
 handleSubmit(){
   this.ngxService.start();
   var formData = this.signupForm.value;

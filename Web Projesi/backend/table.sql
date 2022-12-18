@@ -30,7 +30,19 @@ create  table tbl_game
     categoryId int NOT NULL,
     primary key(gameId)
 );
-
+/*
+create  table tbl_bill
+(
+    billId int NOT NULL AUTO_INCREMENT,
+    name varchar(60) NOT NULL,
+    email varchar(200),
+    contactNumber varchar(60) NOT NULL,
+    paymentMethod varchar(60) NOT NULL,
+    total int NOT NULL,
+    createdBy varchar(60) NOT NULL,
+    primary key(billId)
+);
+*/
 ----------------------------------------------------------------
 --ADDING DATAS--
 ----------------------------------------------------------------

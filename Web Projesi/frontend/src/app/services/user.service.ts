@@ -71,4 +71,15 @@ export class UserService {
     } )
   }
 
+  addAdmin(data:any)
+  {
+    return this.httpClient.post
+    (this.url + "/user/addAdmin", 
+     data,
+     {
+       headers: new HttpHeaders().set('Content-Type', "application/json ")
+     } 
+    )
+  }
+
 }

@@ -1,0 +1,52 @@
+<mat-toolbar color ="primary">
+    <mat-toolbar-row fxLayout="row">
+        <span class="title-center">Add Admin</span> 
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-dialog-content class="mat-typography ">
+    <form [formGroup]= "signAdminForm">
+        <div fxFlex fxLayout="column">
+            <mat-form-field appearance="fill" fxFlex>
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name" required>
+                <mat-error *ngIf="signAdminForm.controls.name.touched && signAdminForm.controls.name.invalid ">
+                    <span *ngIf="signAdminForm.controls.name.errors.required">This field is mandatory.</span>
+                    <span *ngIf="signAdminForm.controls.name.errors.pattern">This field is invalid .</span>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" fxFlex>
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" required>
+                <mat-error *ngIf="signAdminForm.controls.email.touched && signAdminForm.controls.email.invalid ">
+                    <span *ngIf="signAdminForm.controls.email.errors.required">This field is mandatory.</span>
+                    <span *ngIf="signAdminForm.controls.email.errors.pattern">This field is invalid .</span>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" fxFlex>
+                <mat-label>Contact Number</mat-label>
+                <input matInput formControlName="contactNumber" required>
+                <mat-error *ngIf="signAdminForm.controls.contactNumber.touched && signAdminForm.controls.contactNumber.invalid ">
+                    <span *ngIf="signAdminForm.controls.contactNumber.errors.required">This field is mandatory.</span>
+                    <span *ngIf="signAdminForm.controls.contactNumber.errors.pattern">This field is invalid .</span>
+                </mat-error>
+            </mat-form-field>    
+            
+            
+            <mat-form-field appearance="fill" fxFlex>
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="password" type="password" required>
+                <mat-error *ngIf="signAdminForm.controls.password.touched && signAdminForm.controls.password.invalid ">
+                    <span *ngIf="signAdminForm.controls.password.errors.required">This field is mandatory.</span>
+                    <span *ngIf="signAdminForm.controls.password.errors.pattern">This field is invalid .</span>
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </form>
+</mat-dialog-content>   
+<mat-dialog-actions align="center">
+    <button mat-raised-button color="primary" type="submit" (click)="handleAddAdminSubmit()" 
+    [disabled]="!(signAdminForm.valid && signAdminForm.dirty)">Add</button>
+    <button mat-raised-button color="primary" mat-dialog-close>Close</button>
+</mat-dialog-actions>   

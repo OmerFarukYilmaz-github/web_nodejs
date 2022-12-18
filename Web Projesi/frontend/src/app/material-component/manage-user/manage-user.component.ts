@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { AnyARecord } from 'dns';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { UserService } from 'src/app/services/user.service';
 import { GlobalConstant } from 'src/app/shared/global-constant';
+import { SignupComponent } from 'src/app/signup/signup.component';
+import { AdminComponent } from '../dialog/admin/admin.component';
 
 @Component({
   selector: 'app-manage-user',
@@ -20,7 +24,9 @@ export class ManageUserComponent implements OnInit {
   constructor(
     private ngxService:NgxUiLoaderService,
     private snackbarService:SnackbarService,
-    private userService:UserService
+    private userService:UserService,
+    private dialog:MatDialog,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -86,6 +92,11 @@ export class ManageUserComponent implements OnInit {
       });;
   }
 
-
+  handleAddAdminAction()
+  {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = "550px";
+    this.dialog.open(AdminComponent, dialogConfig);
+  }
 
 }
